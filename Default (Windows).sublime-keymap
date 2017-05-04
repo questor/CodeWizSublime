@@ -1,0 +1,5 @@
+[
+   { "keys": ["ctrl+alt+q"], "command": "code_wiz_sublime_method_copy" },
+   { "keys": ["ctrl+alt+w"], "command": "code_wiz_sublime_method_paste" },
+   { "keys": ["alt+shift+o"], "command": "code_wiz_sublime_find_friend_method" }
+]

@@ -1,0 +1,8 @@
+{
+   "version": "2017.05.04.A",
+   "sublime_text": "*",
+   "platforms": ["*"],
+   "description": "c++ helper plugin to switch between declaration/implementation and make it easier to copy'n'paste function names between them",
+   "url": "https://github.com/questor/CodeWizSublime",
+   "dependencies": []
+}
