@@ -53,6 +53,7 @@ class CodeWizSublimeMethodCopy(sublime_plugin.TextCommand):
                   gMethodBuffer.className.append(method_class)
                   #print("append to global list %s %s %s %s" % (method_class, return_type, method_name, params))
 
+
 class CodeWizSublimeMethodPaste(sublime_plugin.TextCommand):
    def run(self, edit):
       filepath = self.view.file_name()
@@ -88,6 +89,7 @@ class CodeWizSublimeMethodPaste(sublime_plugin.TextCommand):
 
          #print("method_implement_code = %s" % method_implement_code)
          self.view.insert(edit, self.view.sel()[0].begin(), method_implement_code)
+
 
 class CodeWizSublimeFindFriendMethod(sublime_plugin.TextCommand):
    def run(self, edit):
@@ -151,11 +153,21 @@ class CodeWizSublimeFindFriendMethod(sublime_plugin.TextCommand):
          #print("search for %s" % target)
 
          content = cpp_view.substr(sublime.Region(0, cpp_view.size()))
+         offset = 0
+         if not currentlyInHeaderFile:
+            begin = content.find("class "+class_name)
+            if begin == -1:
+               return
+            cpp_view.sel().clear()
+            cpp_view.sel().add(sublime.Region(begin))
+            offset = begin
+            content = cpp_view.substr(sublime.Region(begin, cpp_view.size()))
+
          begin = content.find(target)
          if begin == -1:
             return
-         cpp_view.show_at_center(begin)
+         cpp_view.show_at_center(begin+offset)
          cpp_view.sel().clear()
-         cpp_view.sel().add(sublime.Region(begin))
+         cpp_view.sel().add(sublime.Region(begin+offset))
 
 
